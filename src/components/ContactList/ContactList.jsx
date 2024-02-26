@@ -3,15 +3,19 @@ import { List } from './ContactList.styled';
 import { useSelector, useDispatch } from 'react-redux';
 
 export const ContactList = () => {
-  const contacts = useSelector(state => state.contacts.contacts);
+  const contacts = useSelector(state => state.items.contacts);
   const filterContacts = useSelector(state => state.filter.filter);
   const dispatch = useDispatch();
 
+  // const onDeleteContact = contactId => {
+  //   const remainingContacts = contacts.filter(
+  //     contact => contact.id !== contactId
+  //   );
+  //   dispatch(deleteContact(remainingContacts));
+  // };
+
   const onDeleteContact = contactId => {
-    const remainingContacts = contacts.filter(
-      contact => contact.id !== contactId
-    );
-    dispatch(deleteContact(remainingContacts));
+    dispatch(deleteContact(contactId));
   };
 
   const findContact = () => {
